@@ -6,7 +6,7 @@ function autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
     get() {
       const boundFn = originalMethod.bind(this);
       return boundFn;
-    }
+    },
   };
   return adjDescriptor;
 }
@@ -22,25 +22,25 @@ class ProjectInput {
 
   constructor() {
     this.templateElement = document.getElementById(
-      'project-input'
+      "project-input"
     )! as HTMLTemplateElement;
-    this.hostElement = document.getElementById('app')! as HTMLDivElement;
+    this.hostElement = document.getElementById("app")! as HTMLDivElement;
 
     const importedNode = document.importNode(
       this.templateElement.content,
       true
     );
     this.element = importedNode.firstElementChild as HTMLFormElement;
-    this.element.id = 'user-input';
+    this.element.id = "user-input";
 
     this.titleInputElement = this.element.querySelector(
-      '#title'
+      "#title"
     ) as HTMLInputElement;
     this.descriptionInputElement = this.element.querySelector(
-      '#description'
+      "#description"
     ) as HTMLInputElement;
     this.peopleInputElement = this.element.querySelector(
-      '#people'
+      "#people"
     ) as HTMLInputElement;
 
     this.configure();
@@ -57,7 +57,7 @@ class ProjectInput {
       enteredDescription.trim().length === 0 ||
       enteredPeople.trim().length === 0
     ) {
-      alert('Invalid input, please try again!');
+      alert("Invalid input, please try again!");
       return;
     } else {
       return [enteredTitle, enteredDescription, +enteredPeople];
@@ -65,9 +65,9 @@ class ProjectInput {
   }
 
   private clearInputs() {
-    this.titleInputElement.value = '';
-    this.descriptionInputElement.value = '';
-    this.peopleInputElement.value = '';
+    this.titleInputElement.value = "";
+    this.descriptionInputElement.value = "";
+    this.peopleInputElement.value = "";
   }
 
   @autobind
@@ -82,11 +82,11 @@ class ProjectInput {
   }
 
   private configure() {
-    this.element.addEventListener('submit', this.submitHandler);
+    this.element.addEventListener("submit", this.submitHandler);
   }
 
   private attach() {
-    this.hostElement.insertAdjacentElement('afterbegin', this.element);
+    this.hostElement.insertAdjacentElement("afterbegin", this.element);
   }
 }
 
